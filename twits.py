@@ -1,3 +1,6 @@
+# Not used; grabs stock data, and sentiment, from stocktwits' API 
+# Requests are far too rate limited to be useful for this project
+
 import requests
 import json
 import os.path
