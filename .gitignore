@@ -131,3 +131,5 @@ dmypy.json
 *.svg
 *.eps
 *.png
+ignore/
+*.vscode/
