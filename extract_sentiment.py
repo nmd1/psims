@@ -19,6 +19,7 @@ import numpy as np
 
 # Please follow instructions in README to generate your own BEARER TOKEN
 BEARER_TOKEN = 'Please add token here'
+model_pth = 'bert'
 
 # Tester function for checking load and save of model
 def load_save_pretrained(ckpt_path):
@@ -445,7 +446,7 @@ def get_sentiment(unix_timestamps=["1620504200"], ticker="TSLA"):
 
     # Loading required preprocessing tools and trained model
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-    model = load_trained('bert')
+    model = load_trained(model_pth)
     stopword, urlPattern, userPattern, abbreviations = setup_nltk()
     bearer_token = auth()
 
