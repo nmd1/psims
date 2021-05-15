@@ -27,8 +27,8 @@ Once you have access to the Twitter Developer account, go to the [Developer Port
 
 If you'd like to replicate this project please follow these steps: 
 
-1. Run the cells in the Sentiment_Analysis_Model_Training.ipynb notebook. It is suggested that this be run in Cloud Computing environment such as GCP using GPUs to have a faster training time. Feel free to tweak the parameters to see if the sentiment analysis model improves. 
-2. Save the final model from Sentiment_Analysis_Model_Training.ipynb. 
+1. Run the cells in the sentiment_training.ipynb notebook. It is suggested that this be run in Cloud Computing environment such as GCP using GPUs to have a faster training time. Feel free to tweak the parameters to see if the sentiment analysis model improves. 
+2. Save the final model from sentiment_training.ipynb. 
 3. Replace 'model_pth' in extract_sentiment.py with your trained model path. 
 4. Run the prediction notebook to get the prediction of the stock ticker of interest as stated in the next section. 
 
