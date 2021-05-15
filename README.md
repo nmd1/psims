@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # PSIMS - Predicting Stocks by Inferencing Market Sentiment
 
 The goal of this project is to setup stock market prediction model by leveraging sentiment analysis of Twitter data. The following sections will enable users of this code base to set up their own copy of this system and test it.
@@ -18,9 +17,9 @@ Run `pip install -r requirements.txt` to install the needed packages (ideally in
 
 ## Twitter Developer API setup
 
-In order to be able to access the sentiment analysis portion of this project, please ensure that you have a Twitter Developer account. The instructions for setting up one can be found at the following link: https://developer.twitter.com/en/apply-for-access
+In order to be able to access the sentiment analysis portion of this project, please ensure that you have a Twitter Developer account. The instructions for setting up one can be found at the following [link](https://developer.twitter.com/en/apply-for-access).
 
-Once you have access to the Twitter Developer account, go to the Developer Portal: https://developer.twitter.com/en/portal/dashboard. Use the links on the left hand side to set up an App. After you've named your app, you will be provided with an Access Token, Access Key and a Bearer Token. Please save these for future use. Also be sure to replace the placeholder value for 'BEARER_TOKEN' variable in extract_sentiment.py with the bearer token from you application. This will allow you to make calls to the Twitter API to get tweets and process sentiment. 
+Once you have access to the Twitter Developer account, go to the [Developer Portal](https://developer.twitter.com/en/portal/dashboard). Use the links on the left hand side to set up an App. After you've named your app, you will be provided with an Access Token, Access Key and a Bearer Token. Please save these for future use. Also be sure to replace the placeholder value for 'BEARER_TOKEN' variable in extract_sentiment.py with the bearer token from you application. This will allow you to make calls to the Twitter API to get tweets and process sentiment. 
 
 ## Getting Started
 
@@ -70,10 +69,10 @@ Gao, Zhengjie, et al. "Target-dependent sentiment classification with BERT." IEE
 }
 ```
 
-Twitter Training Dataset: https://www.kaggle.com/kazanova/sentiment140
-Twitter Developer API: https://developer.twitter.com/en
+[Twitter Training Dataset](https://www.kaggle.com/kazanova/sentiment140)
+[Twitter Developer API](https://developer.twitter.com/en)
 
 Parts of this code have been adopted from the following links: 
-- https://www.kaggle.com/lykin22/twitter-sentiment-analysis-with-naive-bayes-85-acc
-- https://towardsdatascience.com/sentiment-analysis-in-10-minutes-with-bert-and-hugging-face-294e8a04b671
-- https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/master/Recent-Search/recent_search.py
+- [Twitter Sentiment Analysis with Naive Bayes](https://www.kaggle.com/lykin22/twitter-sentiment-analysis-with-naive-bayes-85-acc)
+- [Sentiment Analysis with BERT](https://towardsdatascience.com/sentiment-analysis-in-10-minutes-with-bert-and-hugging-face-294e8a04b671)
+- [Sample Twitter Python API setup code](https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/master/Recent-Search/recent_search.py)
