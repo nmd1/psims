@@ -20,15 +20,18 @@ import numpy as np
 # Please follow instructions in README to generate your own BEARER TOKEN
 BEARER_TOKEN = 'Please add token here'
 
+# Tester function for checking load and save of model
 def load_save_pretrained(ckpt_path):
     model = TFBertForSequenceClassification.from_pretrained("bert-base-uncased")
     model.save_weights(ckpt_path)
 
+# Load trained model in ckpt_path
 def load_trained(ckpt_path):
     model = TFBertForSequenceClassification.from_pretrained("bert-base-uncased")
     model.load_weights(ckpt_path)
     return model
 
+# Setup necessary environment for tweet processing
 def setup_nltk():
     nltk.download('stopwords')
     nltk.download('punkt')
@@ -409,9 +412,11 @@ def convert_abbrev_in_text(tweet, abbreviations):
     t = [abbreviations[w.lower()] if w.lower() in abbreviations.keys() else w for w in words]
     return ' '.join(t)  
 
+# Returns bearer token for Twitter Developer API
 def auth():
     return BEARER_TOKEN
 
+# Creates search query URL for Twitter
 def create_url(symbol, timestamp):
     query = symbol
     ts = datetime.utcfromtimestamp(timestamp)
@@ -423,21 +428,28 @@ def create_url(symbol, timestamp):
     )
     return url
 
+# Creaters Authorization to be supplied with search
 def create_headers(bearer_token):
     headers = {"Authorization": "Bearer {}".format(bearer_token)}
     return headers
 
+# Sends request to Twitter API
 def connect_to_endpoint(url, headers):
     response = requests.request("GET", url, headers=headers)
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
     return response.json()
 
+# Given list of UNIX timestamps and ticker, returns associated sentiment
 def get_sentiment(unix_timestamps=["1620504200"], ticker="TSLA"):
+
+    # Loading required preprocessing tools and trained model
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
     model = load_trained('bert')
     stopword, urlPattern, userPattern, abbreviations = setup_nltk()
     bearer_token = auth()
+
+    # Iterate through queried timestamps
     sentiments = []
     for timestamp in unix_timestamps:
         timestamp = int(timestamp)
@@ -446,12 +458,16 @@ def get_sentiment(unix_timestamps=["1620504200"], ticker="TSLA"):
         json_response = connect_to_endpoint(url, headers)
         response = json.dumps(json_response, indent=4, sort_keys=True)
         response = json.loads(response)
+
+        # Iterate through tweets returned for timestamp
         tweets = []
         ts = datetime.utcfromtimestamp(timestamp)
         for resp in response["statuses"]:
             time_obj = datetime.strptime(resp["created_at"], "%a %b %d %H:%M:%S +0000 %Y")
             if time_obj.day < ts.day or time_obj.hour < ts.hour or time_obj.minute < ts.minute or time_obj.second < ts.second:
                 tweets.append(resp["text"])
+
+        # Process tweets to get sentiment local to timestamp
         local_sentiments = []
         tweets = list(map(lambda x: preprocess_tweets(x, stopword, urlPattern, userPattern), tweets))
         tweets = list(map(lambda x: convert_abbrev_in_text(x, abbreviations), tweets))
@@ -461,6 +477,8 @@ def get_sentiment(unix_timestamps=["1620504200"], ticker="TSLA"):
         labels = [0,1]
         label = tf.argmax(tf_predictions, axis=1)
         label = label.numpy()
+
+        # Assign aggregate sentiment
         if(np.count_nonzero(label == 1) >= 15):
             sentiments.append(1)
         else:
