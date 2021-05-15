@@ -1,3 +1,4 @@
+# Get data for a single stock form the market using Yahoo Finance API
 import json
 import urllib.request
 import numpy as np

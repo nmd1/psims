@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PSIMS - Predicting Stocks by Inferencing Market Sentiment
 
 The goal of this project is to setup stock market prediction model by leveraging sentiment analysis of Twitter data. The following sections will enable users of this code base to set up their own copy of this system and test it.
@@ -13,6 +14,8 @@ Please be sure to have the following libraries installed:
 - keras >= 2.4.3
 - scikit-learn >= 0.24.1
 
+Run `pip install -r requirements.txt` to install the needed packages (ideally in a virtual environment)
+
 ## Twitter Developer API setup
 
 In order to be able to access the sentiment analysis portion of this project, please ensure that you have a Twitter Developer account. The instructions for setting up one can be found at the following link: https://developer.twitter.com/en/apply-for-access
@@ -26,7 +29,15 @@ If you'd like to replicate this project please follow these steps:
 1. Run the cells in the Sentiment_Analysis_Model_Training.ipynb notebook. It is suggested that this be run in Cloud Computing environment such as GCP using GPUs to have a faster training time. Feel free to tweak the parameters to see if the sentiment analysis model improves. 
 2. Save the final model from Sentiment_Analysis_Model_Training.ipynb. 
 3. Replace 'model_pth' in extract_sentiment.py with your trained model path. 
-4. Run the prediction notebook to get the prediction of the stock ticker of interest. 
+4. Run the prediction notebook to get the prediction of the stock ticker of interest as stated in the next section. 
+
+### Getting stock predictions
+Running `prediction.ipynb` will use sentiment model from tweets to make predictions about the stock market.
+In doing so it will train a new LSTM prediction model. 
+
+Running `standalone_prediction.ipynb` will use 10 selected stocks which, as of May 14th 2021, had a consistently 
+good or bad month to train on. Their sentiment describes if the stock had a good month or bad month.
+In doing so it will train a new LSTM prediction model. 
 
 ## References
 
