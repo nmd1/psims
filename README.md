@@ -2,6 +2,8 @@
 
 The goal of this project is to setup stock market prediction model by leveraging sentiment analysis of Twitter data. The following sections will enable users of this code base to set up their own copy of this system and test it.
 
+![PSIMS Predicting the price of GOOG into the future by 6 minutes](./images/example.png "Stock Prediction")
+
 ## Environment 
 
 Please be sure to have the following libraries installed:
