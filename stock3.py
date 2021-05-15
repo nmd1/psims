@@ -8,8 +8,6 @@ import pandas as pd
 # Valid ranges [1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max]
 def getMultiFinancialDataJSON(stocks, interval="2m", rge="1d"):
     base = "https://query1.finance.yahoo.com/v8/finance/chart/"
-    #stock = "AMD"
-    interval = "2m"
     urls = []
     for stock in stocks:
         url = f"https://query1.finance.yahoo.com/v8/finance/chart/{stock}?interval={interval}&range={rge}"

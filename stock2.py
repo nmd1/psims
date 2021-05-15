@@ -7,8 +7,6 @@ import csv
 import random
 def getFinancialDataJSON(stock, interval="2m", rge="1d"):
     base = "https://query1.finance.yahoo.com/v8/finance/chart/"
-    #stock = "AMD"
-    interval = "2m"
     
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{stock}?interval={interval}&range={rge}"
     print("Loading data using URL [",url,"]")
